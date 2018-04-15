@@ -1,0 +1,121 @@
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row clearfix">
+      <div class="page-header">
+      	<h1>
+          Elemental Cellular Automata
+        </h1>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-default" id="run"   onclick="startSimulation()">Start</button>
+        <button class="btn btn-default" id="pause" onclick="pauseSimulation()">Pause</button>
+        <button class="btn btn-default" id="step"  onclick="stepSimulation()">Step</button>
+        <button class="btn btn-default" id="reset" onclick="resetSimulation()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="sims">
+    <canvas id="SimBase"    width="360" height="360" style="border:1px solid #000000;"></canvas>
+    <canvas id="SimDisturbed" width="360" height="360" style="border:1px solid #000000;"></canvas>
+    <canvas id="SimDiff" width="360" height="360" style="border:1px solid #000000;"></canvas>
+  </div>
+
+  <div class="container">
+    <div class="col-md-5 column">
+      <div class="wrapper">
+        <label for="ruleNum">Name / Number</label>
+        <div class="form-group">
+          <input id="ruleNumeric" type="number" class="form-control" value=22 min=0 max=255 step=1 onchange="ruleFrom(this,'numeric')" />
+        </div>
+      </div>
+      <div class="wrapper">
+        <label for="ruleFull">Full rules</label><br/>
+        <div class="btn-group" data-toggle="buttons" id="ruleFull">
+          <label class="btn btn-primary" onclick="ruleFrom(this,'full')">
+            <input type="checkbox" autocomplete="off" id="ruleFull111"> 111
+          </label>                                                 
+          <label class="btn btn-primary" onclick="ruleFrom(this,'full')">
+            <input type="checkbox" autocomplete="off" id="ruleFull110"> 110
+          </label>                                                 
+          <label class="btn btn-primary" onclick="ruleFrom(this,'full')">
+            <input type="checkbox" autocomplete="off" id="ruleFull101"> 101
+          </label>                                                 
+          <label class="btn btn-primary" onclick="ruleFrom(this,'full')">
+            <input type="checkbox" autocomplete="off" id="ruleFull100"> 100
+          </label>                                                 
+          <label class="btn btn-primary" onclick="ruleFrom(this,'full')">
+            <input type="checkbox" autocomplete="off" id="ruleFull011"> 011
+          </label>                                                 
+          <label class="btn btn-primary" onclick="ruleFrom(this,'full')">
+            <input type="checkbox" autocomplete="off" id="ruleFull010"> 010
+          </label>                                                 
+          <label class="btn btn-primary" onclick="ruleFrom(this,'full')">
+            <input type="checkbox" autocomplete="off" id="ruleFull001"> 001
+          </label>                                                 
+          <label class="btn btn-primary" onclick="ruleFrom(this,'full')">
+            <input type="checkbox" autocomplete="off" id="ruleFull000"> 000
+          </label>
+        </div>
+      </div>
+      <div class="wrapper">
+        <label for="ruleLegal">Legal rules</label><br/>
+        <div class="btn-group" data-toggle="buttons" id="ruleLegal">
+          <label class="btn btn-primary" onclick="ruleFrom(this,'legal')">
+            <input type="checkbox" autocomplete="off" id="ruleLegal111"> 111
+          </label>
+          <label class="btn btn-primary" onclick="ruleFrom(this,'legal')">
+            <input type="checkbox" autocomplete="off" id="ruleLegal101"> 101
+          </label>
+          <label class="btn btn-primary" onclick="ruleFrom(this,'legal')">
+            <input type="checkbox" autocomplete="off" id="ruleLegal011"> 011
+          </label>
+          <label class="btn btn-primary" onclick="ruleFrom(this,'legal')">
+            <input type="checkbox" autocomplete="off" id="ruleLegal010"> 010
+          </label>
+          <label class="btn btn-primary" onclick="ruleFrom(this,'legal')">
+            <input type="checkbox" autocomplete="off" id="ruleLegal001"> 001
+          </label>
+        </div>
+      </div> 
+      <div class="wrapper">
+        <label for="ruleLegal">Voting rules</label><br/>
+        <div class="btn-group" data-toggle="buttons" id="ruleVoting">
+          <label class="btn btn-primary" onclick="ruleFrom(this,'voting')">
+            <input type="checkbox" autocomplete="off" id="ruleVoting111"> 111
+          </label>
+          <label class="btn btn-primary" onclick="ruleFrom(this,'voting')">
+            <input type="checkbox" autocomplete="off" id="ruleVoting101"> 101
+          </label>
+          <label class="btn btn-primary" onclick="ruleFrom(this,'voting')">
+            <input type="checkbox" autocomplete="off" id="ruleVoting010"> 010
+          </label>
+          <label class="btn btn-primary" onclick="ruleFrom(this,'voting')">
+            <input type="checkbox" autocomplete="off" id="ruleVoting000"> 000
+          </label>
+        </div>
+      </div> 
+    </div> <!-- column -->
+    <div class="col-md-7 column">
+      <canvas id="HammingChart" width="600" height="300" style="border:1px solid #000000;"></canvas>
+    </div> <!-- column -->
+  </div> <!-- container -->
+
+  <script src="js/helpers.js"></script> 
+  <script src="js/tape.js"></script> 
+  <script src="js/main.js"></script> 
+
+</body>
+</html>

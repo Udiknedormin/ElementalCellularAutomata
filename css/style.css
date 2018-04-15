@@ -1,0 +1,13 @@
+#box {
+    margin: auto;
+}
+
+#toolbox {
+    float: none;
+    clear: both;
+    margin: auto;
+}
+
+.form-control {
+    text-align: right;
+}
